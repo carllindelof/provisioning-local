@@ -1,0 +1,83 @@
+---
+- name: screen dimming - alter grub file
+  lineinfile:
+    dest: /etc/default/grub
+    regexp: "^GRUB_CMDLINE_LINUX_DEFAULT="
+    line: 'GRUB_CMDLINE_LINUX_DEFAULT="quiet splash video.use_native_backlight=1"'
+  sudo: yes
+  register: grubfile
+  tags: sager
+
+- name: screen dimming - update grub
+  command: sudo update-grub
+  sudo: yes
+  when: grubfile|changed
+  tags: sager
+
+- name: keyboard colors - requirements
+  apt:
+    pkg: "{{ item }}"
+    state: installed
+  with_items:
+    - build-essential
+    - linux-source
+  sudo: yes
+  tags: sager
+
+- name: keyboard colors - Make sure setup directory exists
+  file:
+    path: "{{ ansible_env.HOME }}/setup"
+    state: directory
+  tags: sager
+
+- name: keyboard colors - checkout clevo-wmi-code
+  git:
+    repo: git://git.code.sf.net/p/clevo-wmi/code
+    dest: "{{ ansible_env.HOME }}/setup/clevo-wmi-code"
+    accept_hostkey: yes
+  tags: sager
+
+- name: keyboard colors - build clevo-wmi
+  command: make
+  args:
+    chdir: "{{ ansible_env.HOME }}/setup/clevo-wmi-code"
+  tags: sager
+
+- name: keyboard colors - link clevo-wmi to kernel check
+  command: cat /etc/modules
+  sudo: yes
+  register: running_modules
+  tags: sager
+
+- name: keyboard colors - link clevo-wmi to kernel
+  command: "sudo insmod {{ ansible_env.HOME }}/setup/clevo-wmi-code/clevo_wmi.ko"
+  sudo: yes
+  # when: running_modules.stdout.find('clevo_wmi') == -1
+  tags: sager
+  ignore_errors: True
+
+- name: keyboard colors - copy to kernel drivers
+  copy:
+    src: "{{ ansible_env.HOME }}/setup/clevo-wmi-code/clevo_wmi.ko"
+    dest: "/lib/modules/{{ ansible_kernel }}/kernel/drivers/platform/x86/"
+  sudo: yes
+  tags: sager
+
+- name: keyboard colors - handle dependencies
+  command: sudo depmod -a
+  sudo: yes
+  tags: sager
+
+- name: keyboard colors- add to etc/modules
+  lineinfile:
+    dest: /etc/modules
+    line: clevo_wmi
+  sudo: yes
+  tags: sager
+
+- name: keyboard colors - copy kbbl script
+  copy:
+    src: keyboard-color.sh
+    dest: "{{ ansible_env.HOME }}/keyboard-color.sh"
+    mode: 0755
+  tags: sager
