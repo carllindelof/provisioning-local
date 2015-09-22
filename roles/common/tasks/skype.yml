@@ -1,11 +1,4 @@
 ---
-- name: install skype - add partner ppa
-  apt_repository:
-    repo: 'deb http://archive.canonical.com/ $(lsb_release -sc) partner'
-    state: present
-    update_cache: yes
-  sudo: yes
-
 - name: install skype
   apt:
     name: "{{ item }}"

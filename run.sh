@@ -10,6 +10,10 @@ cd provisioning-local
 
 sudo pip install -r requirements.txt
 
+# add canonical partner repository
+sudo add-apt-repository "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+sudo apt-get update
+
 echo -e "please make sure to edit the config.json file followed by [ENTER]" && read USELESS_VAR
 
 ansible-playbook setup.yml -i HOSTS --ask-sudo-pass  --module-path ./ansible_modules --extra-vars "@config.json"
