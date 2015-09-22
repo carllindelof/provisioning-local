@@ -1,0 +1,11 @@
+---
+- name: download forticlient-sslvpn .deb package
+  get_url:
+    url: "https://hadler.me/files/forticlient-sslvpn_4.4.2317-1_amd64.deb"
+    dest: "{{ ansible_env.HOME }}/setup/forticlient-sslvpn_4.4.2317-1_amd64.deb"
+    mode: 0755
+
+- name: install forticlient-sslvpn
+  apt:
+    deb: "{{ ansible_env.HOME }}/setup/forticlient-sslvpn_4.4.2317-1_amd64.deb"
+  sudo: yes

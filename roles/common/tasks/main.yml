@@ -17,4 +17,5 @@
   - include: skype.yml
   - include: xmind.yml
   - include: oraclejava8.yml
-  - include: nixnote.yml
+  - include: docker.yml
+  - include: fortigatevpn.yml
