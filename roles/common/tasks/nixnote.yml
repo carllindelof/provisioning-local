@@ -6,9 +6,9 @@
     update_cache: yes
   sudo: yes
 
-  - name: install nixnote
-    apt:
-      name: "nixnote"
-      state: installed
-      update_cache: yes
-   sudo: yes
+- name: install nixnote
+  apt:
+    name: "nixnote"
+    state: installed
+    update_cache: yes
+ sudo: yes

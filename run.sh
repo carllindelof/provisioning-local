@@ -1,3 +1,5 @@
+sudo apt-get update
+
 sudo apt-get install python-setuptools aptitude git python-dev libxml2-dev libxslt-dev
 
 sudo easy_install pip
