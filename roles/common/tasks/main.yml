@@ -12,10 +12,10 @@
   - include: other_requirements.yml
   - include: dropbox.yml
   - include: bash_customizations.yml
-  - include: bumblebee.yml
-    when: bumblebee == true
   - include: skype.yml
   - include: xmind.yml
   - include: oraclejava8.yml
   - include: docker.yml
   - include: fortigatevpn.yml
+  - include: bumblebee.yml
+    when: bumblebee == true
