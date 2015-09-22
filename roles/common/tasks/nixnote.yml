@@ -1,0 +1,14 @@
+---
+- name: install nixnote ppa
+  apt_repository:
+    repo: "ppa:vincent-c/nevernote"
+    state: present
+    update_cache: yes
+  sudo: yes
+
+  - name: install nixnote
+    apt:
+      name: "nixnote"
+      state: installed
+      update_cache: yes
+   sudo: yes

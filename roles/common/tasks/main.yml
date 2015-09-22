@@ -5,11 +5,7 @@
   - include: numix.yml
   - include: plank.yml
   - include: keepass2.yml
-  - include: laptop.yml
-    when: sager_laptop == true
-  - include: variety.yml
   - include: font.yml
-  - include: base16.yml
   - include: work.yml
   - include: ruby_scm_breeze.yml
   - include: vim.yml
@@ -18,3 +14,7 @@
   - include: bash_customizations.yml
   - include: bumblebee.yml
     when: bumblebee == true
+  - include: skype.yml
+  - include: xmind.yml
+  - include: oraclejava8.yml
+  - include: nixnote.yml
