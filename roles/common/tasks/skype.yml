@@ -6,12 +6,12 @@
     update_cache: yes
   sudo: yes
 
-  - name: install skype
-    apt:
-      name: "{{ item }}"
-      state: installed
-      update_cache: yes
-    with_items:
-      - skype
-      - skype-bin
-    sudo: yes
+- name: install skype
+  apt:
+    name: "{{ item }}"
+    state: installed
+    update_cache: yes
+  with_items:
+    - skype
+    - skype-bin
+  sudo: yes
