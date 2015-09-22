@@ -8,7 +8,7 @@ How To Install With One Command
 -------------------------------
 
 ```bash
-wget -qO- https://github.com/JBKahn/provisioning-local/raw/master/run.sh | sudo bash
+wget -qO- https://github.com/carllindelof/provisioning-local/raw/master/run.sh | sudo bash
 ```
 
 
@@ -32,7 +32,7 @@ How To Install The Old Fashioned Way
   * [setup ssh keys](https://help.github.com/articles/generating-ssh-keys)
 4.  Checkout this repo and cd into the directory
   ```bash
-  git clone https://github.com/JBKahn/provisioning-local.git <dir>
+  git clone https://github.com/carllindelof/provisioning-local.git <dir>
   cd <dir>
   ```
 
