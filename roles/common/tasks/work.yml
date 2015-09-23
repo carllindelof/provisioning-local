@@ -58,39 +58,15 @@
   ignore_errors: True
   tags: nodejs
 
-- name: checkout node
-  git:
-    repo: "git://github.com/ry/node.git"
+- name: Install nodejs
+  apt:
+    name: "nodejs"
     dest: "/setup/node"
-    force: no
-    accept_hostkey: yes
+    update_cache: yes
   when: result.rc !=0
   tags: nodejs
   sudo: yes
 
-- name: configure
-  sudo: yes
-  command: "./configure"
-  args:
-    chdir: /setup/node
-  when: result.rc !=0
-  tags: nodejs
-
-- name: make
-  command: "make"
-  sudo: yes
-  args:
-    chdir: /setup/node
-  when: result.rc !=0
-  tags: nodejs
-
-- name: make install
-  command: "make install"
-  sudo: yes
-  args:
-    chdir: /setup/node
-  when: result.rc !=0
-  tags: nodejs
 
 - name: install global nodejs packages
   npm:
