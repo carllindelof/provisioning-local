@@ -17,5 +17,6 @@
   - include: oraclejava8.yml
   - include: docker.yml
   - include: fortigatevpn.yml
+  - include: mysqlworkbench.yml
   - include: bumblebee.yml
     when: bumblebee == true
