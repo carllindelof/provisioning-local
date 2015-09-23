@@ -61,7 +61,6 @@
 - name: Install nodejs
   apt:
     name: "nodejs"
-    dest: "/setup/node"
     update_cache: yes
   when: result.rc !=0
   tags: nodejs
