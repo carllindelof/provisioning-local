@@ -1,0 +1,11 @@
+---
+- name: download xmind .deb package
+  get_url:
+    url: "http://www.xmind.net/xmind/downloads/xmind-linux-3.5.3.201506180105_amd64.deb"
+    dest: "{{ ansible_env.HOME }}/setup/xmind-linux-3.5.3.201506180105_amd64.deb"
+    mode: 0755
+
+- name: install xmind
+  apt:
+    deb: "{{ ansible_env.HOME }}/setup/xmind-linux-3.5.3.201506180105_amd64.deb"
+  sudo: yes
