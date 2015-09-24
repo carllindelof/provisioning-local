@@ -11,7 +11,7 @@
 
 - name: Download intellij
   get_url:
-    url: url="http://download.jetbrains.com/idea/ideaIC-14.1.4.tar.gz"
+    url: "http://download.jetbrains.com/idea/ideaIC-14.1.4.tar.gz"
     dest: "{{ ansible_env.HOME }}/setup/"
     mode: 0755
 
