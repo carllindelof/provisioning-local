@@ -14,7 +14,7 @@
   - include: bash_customizations.yml
   - include: skype.yml
   - include: xmind.yml
-  - include: oraclejava8.yml
+  - include: oraclejava.yml
   - include: docker.yml
   - include: fortigatevpn.yml
   - include: mysqlworkbench.yml
