@@ -1,6 +1,7 @@
 ---
   - include: pre.yml
   - include: oraclejava.yml
+  - include: intellij.yml
   - include: docker.yml
   - include: fortigatevpn.yml
   - include: mysqlworkbench.yml

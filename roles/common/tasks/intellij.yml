@@ -1,0 +1,26 @@
+---
+- name: Install needed dependencies
+  apt:
+    name: "{{ item }}"
+    state: installed
+    update_cache: yes
+  with_items:
+    - tar
+    - unzip
+  sudo: yes
+
+- name: Download intellij
+  url: url="http://download.jetbrains.com/idea/ideaIC-14.1.4.tar.gz"
+  dest: "{{ ansible_env.HOME }}/setup/"
+
+- name: Ensure installation directory
+  file:
+    state=directory
+    mode=0755
+    dest="/opt/intellij"
+
+- name: Unarchive intellij
+  unarchive:
+    copy=no
+    src="{{ ansible_env.HOME }}/setup/ideaIC-14.1.4.tar.gz"
+    dest="/opt/intellij"
