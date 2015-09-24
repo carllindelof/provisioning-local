@@ -1,5 +1,9 @@
 ---
   - include: pre.yml
+  - include: oraclejava.yml
+  - include: docker.yml
+  - include: fortigatevpn.yml
+  - include: mysqlworkbench.yml
   - include: sublime.yml
   - include: chrome.yml
   - include: numix.yml
@@ -14,9 +18,5 @@
   - include: bash_customizations.yml
   - include: skype.yml
   - include: xmind.yml
-  - include: oraclejava.yml
-  - include: docker.yml
-  - include: fortigatevpn.yml
-  - include: mysqlworkbench.yml
   - include: bumblebee.yml
     when: bumblebee == true
