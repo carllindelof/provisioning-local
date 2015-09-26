@@ -19,5 +19,6 @@
   - include: bash_customizations.yml
   - include: skype.yml
   - include: xmind.yml
+  - include: mariadbclient.yml
   - include: bumblebee.yml
     when: bumblebee == true
