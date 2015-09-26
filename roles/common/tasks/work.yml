@@ -51,21 +51,6 @@
     - python-dev
   sudo: yes
 
-- name: get currently installed node version
-  command: "node --version"
-  sudo: yes
-  register: result
-  ignore_errors: True
-  tags: nodejs
-
-- name: Install nodejs
-  apt:
-    name: "nodejs"
-    update_cache: yes
-  when: result.rc !=0
-  tags: nodejs
-  sudo: yes
-
 
 - name: install global nodejs packages
   npm:
@@ -80,6 +65,14 @@
     - {name: 'less'}
     - {name: 'jshint'}
     - {name: 'coffee-jshint'}
+  sudo: yes
+
+- name: create nodejs link
+  file:
+    src: "/usr/bin/nodejs"
+    dest: "/usr/bin/node"
+    mode: 0755
+    state: link
   sudo: yes
 
 - name: install tmuxp
